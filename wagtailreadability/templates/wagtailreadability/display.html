@@ -1,0 +1,11 @@
+{% load i18n %}
+{% trans "Readability score" as choose_str %}
+{% include "wagtailadmin/shared/header.html" with title=choose_str icon="view" %}
+
+<div class="nice-padding">
+	<form class="snippet-search search-bar" action="{# url get score this way? #}" method="GET">
+
+		<button type='submit'>Display score</button>
+	</form>
+
+</div>
