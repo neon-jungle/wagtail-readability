@@ -3,9 +3,23 @@
 {% include "wagtailadmin/shared/header.html" with title=choose_str icon="view" %}
 
 <div class="nice-padding">
-	<form class="snippet-search search-bar" action="{# url get score this way? #}" method="GET">
 
-		<button type='submit'>Display score</button>
-	</form>
+	<div class='help-block help-info'>
+		The Flesch Reading Ease formula
+		<ul>
+			<li>90-100 : Very Easy</li>
+			<li>80-89 : Easy</li>
+			<li>70-79 : Fairly Easy</li>
+			<li>60-69 : Standard</li>
+			<li>50-59 : Fairly Difficult</li>
+			<li>30-49 : Difficult</li>
+			<li>0-29 : Very Confusing</li>
+		</ul>
+	</div>
 
+	{% if error %}
+	<p class='help-block help-critical'> {{error}} </p>
+	{% else %}
+	<h1> Score {{score}}/100 </h1>
+	{% endif %}
 </div>

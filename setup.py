@@ -26,7 +26,6 @@ setup(
 
     install_requires=[
         'wagtail>=1.0',
-        'textstat>=0.2',
     ],
     zip_safe=False,
     license='BSD License',
