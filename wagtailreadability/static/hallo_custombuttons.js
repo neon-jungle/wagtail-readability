@@ -25,9 +25,30 @@ function ModModalWorkflow(opts) {
 
     self.body = container.find('.modal-body');
 
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = $.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+
     self.loadUrl = function(url, urlParams) {
-        var text = {'text': opts.text}
-        $.post(url, text, self.loadResponseText, 'text');
+        var postdata = {
+            'text': opts.text,
+            'csrfmiddlewaretoken': csrftoken
+            }
+        $.post(url, postdata, self.loadResponseText, 'text');
     };
 
     self.postForm = function(url, formData) {

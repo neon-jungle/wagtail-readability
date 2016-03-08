@@ -1,10 +1,8 @@
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from wagtail.wagtailadmin.modal_workflow import render_modal_workflow
 from wagtailreadability import textstat
 
 
-@csrf_exempt
 def display(request):
     if request.method != "POST":
         response = HttpResponse('<h1>Method not allowed.</h1>', status=405)
